@@ -48,7 +48,8 @@ public @interface ManyToOne {
        references parent    
 ```
 
-![image.png](attachment:b6650c5c-9cb9-4e99-8eb8-30c8467ca62c:image.png)
+![image](https://github.com/user-attachments/assets/05d8f699-96b9-42d0-b07a-2ff790deb836)
+
 
 > **기본 값은 됐고, optional과 cascade 속성을 사용하는 방법에 대해 좀 더 알아볼 것**
 >
@@ -340,7 +341,7 @@ public class Parent {
 
 **💴 에러 메시지**
 
-![image.png](attachment:5474e45a-fddc-4390-bb6f-af8fe789ddce:image.png)
+![image](https://github.com/user-attachments/assets/78ce575e-d024-4979-897b-ec7b98b6289e)
 
 에러가 떴다. DataIntegrityViolationException, PSQLException
 
