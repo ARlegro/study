@@ -134,13 +134,15 @@ List of constraint violations:[
 
 이는, 검증을 DB에서 하는 것이 아니라 스프링 차원에서 하는 것이다.
 
-## @Columne(nullabe = false) 적용 시
+## @Column(nullable = false) 적용 시
 
-### @Columne 기본 개념
+### @Column 기본 개념
 
 - JPA 명세에 포함된 애노테이션이다.
+- 실제 데이터베이스 열의 특정 특성을 나타내기 위해 사용
 - 따라서, DTO같은 다른 일반 클래스에는 사용할 수 없고, 엔티티에만 적용이 가능하다
 - 목적 : 주로, DDL 스키마 생성 시 사용된다.
+- 이 애노테이션을 생략하면 @Column의 기본값이 적용된다.(예외는 있는데 일단은 딥하게 X)
 
 ### 엔티티 세팅 및 테스트
 
@@ -262,16 +264,16 @@ spring.jpa.properties.hibernate.check_nullability=true
 
 ### @Column 분석 정리
 
-`@Columne(nullabe = false)` 를 사용하는 경우에는 SQL 쿼리가 실제 실행되었고 DB에서 예외가 발생했다.
+`@Column(nullabe = false)` 를 사용하는 경우에는 SQL 쿼리가 실제 실행되었고 DB에서 예외가 발생했다.
 
 # 종합 결론
 
-`@NotNull과 @Columne(nullabe = false)` 모두 DB에 null값이 들어가는 것을 방지해주는 효과가 있지만
+`@NotNull과 @Column(nullabe = false)` 모두 DB에 null값이 들어가는 것을 방지해주는 효과가 있지만
 
 약간의 목적과 과정이 달랐다.
 
 - `@NotNull` : Bean Validation에 기반해, SQL 실행 전 애플리케이션 레벨에서 검증 수행
-- `@Columne(nullabe = false)` : DDL 스키마에만 영향을 줌. 따라서 SQL 실행 후 검증은 DB에서 수행
+- `@Column(nullabe = false)` : DDL 스키마에만 영향을 줌. 따라서 SQL 실행 후 검증은 DB에서 수행
 
 **✅ 검증 시점의 관점으로 볼 때 `@NotNull` 승**
 
@@ -330,7 +332,7 @@ public class Item {
 
 대신, 직접 DDL 스크립트를 수동으로 작성해서 실행시키게 한다.
 
-그렇기 때문에 운영 및 배포할 때 `@Columne(nullabe=false)`를 같이, 코드에 제약 조건을 표현하는 것이 필요없다고 느낄 수 있다.
+그렇기 때문에 운영 및 배포할 때 `@Column(nullabe=false)`를 같이, 코드에 제약 조건을 표현하는 것이 필요없다고 느낄 수 있다.
 
-> 하지만 앞서 말했던, **@Column의 장점**들을 살리기 위해 개발자 간 암묵적 계약으로**@Columne(nullable=false) 를 표현해 두는 것이 좋은 것 같다.**
+> 하지만 앞서 말했던, **@Column의 장점**들을 살리기 위해 개발자 간 암묵적 계약으로**@Column(nullable=false) 를 표현해 두는 것이 좋은 것 같다.**
 >
