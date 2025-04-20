@@ -112,7 +112,8 @@ not null 제약 조건을 위배했기 때문에 예상대로 오류가 발생�
 
 ConstraintViolationException:
 
-![image.png](attachment:a9b5b1ac-71e1-4e89-bddd-5675f2fb0051:image.png)
+![image](https://github.com/user-attachments/assets/48c10746-5afb-4a66-ae84-86a9ba9b7460)
+
 
 jakarta.validation.ConstraintViolationException
 
@@ -228,13 +229,14 @@ Hibernate:
 
 Caused by: org.postgresql.util.PSQLException: → org.hibernate.exception.ConstraintViolationException
 
-![image.png](attachment:447f9c2d-f3c4-42af-8c2e-a0ba021edf44:image.png)
+![image](https://github.com/user-attachments/assets/abd5341a-40e2-432e-ac01-d8c65e8bc658)
+
 
 @NotNull에서는 **ConstraintViolationException**예외만 터졌었는데,
 
 이번 경우에는 **ConstraintViolationException + PSQLException** 오류 메시지가 떴다.
 
-```kotlin
+```java
 org.hibernate.exception.**ConstraintViolationException**: could not execute statement [오류: "name" 칼럼(해당 릴레이션 "item")의 null 값이 not null 제약조건을 위반했습니다.
   Detail: 실패한 자료: (d069f405-8c04-453f-a88c-39ba797b3f9a, null)] [insert into item (name,id) values (?,?)]
 
@@ -247,20 +249,17 @@ Caused by: org.postgresql.util.**PSQLException**: 오류: "name" 칼럼(해당 �
 	.....
 ```
 
-<aside>
-💡
-
-**참고 : DB 접근 전 유효성 검사 시키는 방법**
+💡 **참고 : DB 접근 전 유효성 검사 시키는 방법**
 
 아래와 같이 설정하면 @Column 방법이라도 SQL이 나가기전에 예외 처리된다.
 
-```kotlin
+```java
 spring.jpa.properties.hibernate.check_nullability=true
 ```
 
-![image.png](attachment:31eb3ee1-e2a7-4d1d-b865-9c416be9d3b2:image.png)
+![image](https://github.com/user-attachments/assets/9471bda5-ccf1-4f79-a0e6-893acb544938)
 
-</aside>
+
 
 ### @Column 분석 정리
 
