@@ -7,7 +7,7 @@
 
 - 아래는 S3관련 설정 빈들을 만들기 위한 클래스다.
 
-```kotlin
+```java
 
 @Configuration
 @EnableConfigurationProperties(S3ConfigProperties.class)
@@ -16,7 +16,7 @@ public class S3Config {
 
   private final S3ConfigProperties s3Properties; // 이건 @ConfigurationProperties로 정의한 클래스 
   private final S3OutputStreamProvider s3OutputStreamProvider;
-  
+
   @Primary
   @Bean
   public S3Client s3Client() {
@@ -28,12 +28,13 @@ public class S3Config {
         .region(s3Region)
         .build();
   }
-  
+
   @Bean(name = "articleS3Resource")
   public S3Resource articleS3Resource() {
     String location = "s3://" + s3Properties.bucket() + "/";
     return S3Resource.create(location, s3Client(), s3OutputStreamProvider);
   }
+}
 ```
 
 ```kotlin
@@ -85,7 +86,7 @@ Caused by: org.springframework.beans.factory.BeanCurrentlyInCreationException: E
 
 코드를 다시 보자
 
-```kotlin
+```java
 
 @Configuration
 @EnableConfigurationProperties(S3ConfigProperties.class)
@@ -94,7 +95,7 @@ public class S3Config {
 
   private final S3ConfigProperties s3Properties;
   private final S3OutputStreamProvider s3OutputStreamProvider;     // 참조 부분 
-  
+
   @Primary
   @Bean
   public S3Client s3Client() {     // 참조 부분 
@@ -106,13 +107,14 @@ public class S3Config {
         .region(s3Region)
         .build();
   }
-  
+
   @Bean(name = "articleS3Resource")
   public S3Resource articleS3Resource() {
     String location = "s3://" + s3Properties.bucket() + "/";
     // 참조 부분 
     return S3Resource.create(location, s3Client(), s3OutputStreamProvider);
   }
+}
 ```
 
 이 코드에서 등록되는 빈
@@ -146,7 +148,7 @@ public class S3Config {
 
 - 파라미터 방식은 컨테이너가 **이미 준비된 빈**을 주입하므로 순환이 발생하지 않는다.
 
-```kotlin
+```java
 @Configuration
 @EnableConfigurationProperties(S3ConfigProperties.class)
 @RequiredArgsConstructor
@@ -172,4 +174,5 @@ public class S3Config {
     String location = "s3://" + s3Properties.bucket() + "/";
     return S3Resource.create(location, s3Client(), s3OutputStreamProvider);
   }
+}
 ```
