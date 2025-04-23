@@ -27,7 +27,7 @@
 
 ### 그림 이해
 
-![image.png](attachment:b8db06d0-2120-4754-8bd8-7de1a6403b18:image.png)
+![image](https://github.com/user-attachments/assets/9df4e6af-67b3-4aa3-bf65-09404083ca4f)
 
 이 애노테이션이 붙은 빈은 프록시 모드로 선언되어 내부적으로 Proxy객체가 생성된다.
 
@@ -35,13 +35,15 @@
 
 큰 장점으로는, 병렬 처리 시 각 스레드마다 생성된 스코프 빈이 할당되기 때문에 스레드에 안전하게 실행이 가능하다.
 
-![image.png](attachment:285f0be6-36ee-45e6-a756-21b72710d972:image.png)
+![image](https://github.com/user-attachments/assets/c9a22fd8-6ed7-4c77-a8a7-2225c7e75dc6)
+
 
 즉, Job이 실행될 때 실제 빈 생성 후 사용
 
 > **아래로 가면 더 자세한 그림이 나오니 그거 확인할 것**
 >
 
+# 시작 
 ## 1. @JobScope
 
 **✅ 개념**
@@ -102,7 +104,9 @@
 
 **그림으로 이해하기**
 
-![image.png](attachment:e6b27ded-7fba-40cf-971f-2730140d7f04:image.png)
+![image](https://github.com/user-attachments/assets/7ce1d18e-c98b-420a-a2cb-4b0ab6aeaf0c)
+
+(출처 : 인프런 정수원님 배치 강의)
 
 - Job이 Proxy객체인 Step을 호출
 - JobScope클래스는 내부적으로 JobContext 속성을 가지고 있다.
