@@ -5,8 +5,7 @@
 아래는 나의 프로젝트의 구조다.
 
 ## 문제
-
-![기사 수집 배치 작업 흐름도.png](attachment:e8eb09e0-453d-4d63-ae90-03a33255067f:기사_수집_배치_작업_흐름도.png)
+![image](https://github.com/user-attachments/assets/8724b284-007c-4e0e-8f8a-655eca7109aa)
 
 ### ‼️**상황 요약**
 
@@ -56,7 +55,8 @@ https://docs.spring.io/spring-batch/reference/common-patterns.html#passingDataTo
 
 **(다음 Step에 전달하는 방법에 대한 레퍼런스)**
 
-![image.png](attachment:229deefa-1a69-46f7-aba3-6ef285744355:image.png)
+![image](https://github.com/user-attachments/assets/557804ce-cf6d-407b-92f7-4edcf0f6bc82)
+
 
 ### 사용 방법
 
@@ -118,7 +118,8 @@ StepExecution에 저장한 데이터를 JobExecution으로 승격할 데이터�
   }
 ```
 
-![image.png](attachment:18d70153-5bb2-4a41-a588-e9fbee699f2b:image.png)
+![image](https://github.com/user-attachments/assets/a3bdf2fb-40ee-4716-a5f7-645af28f3faf)
+
 
 분명 StepContext에 넣었는데 JobContext에 꺼내는게 성공했다. 
 
